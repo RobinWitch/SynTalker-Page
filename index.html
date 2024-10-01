@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"> 
+  
+  <meta property="og:title" content="SynTalker: Enabling Synergistic Full-Body Control in Prompt-Based Co-Speech Motion Generation"/>
+  <meta property="og:url" content=""/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta name="google-site-verification" content="c-OO9s8QGRGOjdJTz3dyfcYlgskfbLXnwRRAzQLcoWw" />
+
+  <title>SynTalker</title>
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-62B92XNTBK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-62B92XNTBK');
+  </script>
+  
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+  <link rel="icon" href="static/figures/icon2.png">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+
+<body>
+
+
+<section class="publication-header">
+  <div class="hero-body">
+    <div class="container is-max-widescreen">
+      <!-- <div class="columns is-centered"> -->
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">SynTalker: Enabling Synergistic Full-Body Control in Prompt-Based Co-Speech Motion Generation</h1>
+          <div class="is-size-3 publication-authors">
+            ACMMM 2024
+          </div>
+        </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="publication-author-block">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Bohong Chen</a><sup>1</sup>,</span>
+            <span class="author-block">Yumeng Li</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://yaoxiangding.github.io/" target="_blank">Yaoxiang Ding</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://www.tianjiashao.com/" target="_blank">Tianjia Shao</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="http://kunzhou.net/" target="_blank">Kun Zhou</a><sup>1</sup>,</span>
+            
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Zhejiang University, China<sup>1</sup>,</span> 
+            <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
+          </div>
+          
+
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="None" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+            
+              <span class="link-block">
+                <a href="https://github.com/RobinWitch/SynTalker" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Code</span>
+              </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://youtu.be/hkCQLrLarxs"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+
+              <!-- </span> -->
+              <!-- Colab Link. -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+
+      <div class="column is-centered has-text-centered">
+        <img src="static/figures/teaser.png" alt="cars peace"/>
+      </div>
+     
+      <h2 class="subtitle has-text-centered">
+        </span> SynTalker generated cospeech full body motion following user prompt.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Current co-speech motion generation approaches usually focus on upper body gestures following speech contents only, 
+            while lacking supporting the elaborate control of synergistic full-body motion based on text prompts, such as talking while walking. 
+            The major challenges lie in 1) the existing speech-to-motion datasets only involve highly limited full-body motions, 
+            making a wide range of common human activities out of training distribution; 2) these datasets also lack annotated user prompts. 
+            To address these challenges, we propose SynTalker, which utilizes the off-the-shelf text-to-motion dataset 
+            as an auxiliary for supplementing the missing full-body motion and prompts. The core technical contributions are two-fold. 
+            One is the multi-stage training process which obtains an aligned embedding space of motion, speech, 
+            and prompts despite the significant distributional mismatch in motion between speech-to-motion and text-to-motion datasets. 
+            Another is the diffusion-based conditional inference process, which utilizes the separate-then-combine strategy to realize 
+            fine-grained control of local body parts. Extensive experiments are conducted to verify that our approach supports precise and 
+            flexible control of synergistic full-body motion generation based on both speeches and user prompts, which is beyond the ability of existing approaches.    
+            </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+
+      <div class="column is-centered has-text-centered">
+        <img src="static/figures/system_overview.png" alt="cars peace"
+        width="600"/>
+      </div>
+  </div>
+</div>
+</div>
+</section>
+
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+<!--         <h2 class="title is-3">How does it work?</h2> -->
+        <div class="content has-text-justified">
+          <p>
+            SynTalker takes speech audio and the corresponding transcripts
+            as inputs, targeting at outputting realistic and stylized full-body
+            motions that align with the speech content rhythmically and semantically. 
+            Compared with traditional co-speech generation model,
+            besides speech, it further allows to use a short piece of text, namely
+            a text prompt to provide additional descriptions for the desired
+            motion style. The full-body motions are then generated to follow
+            the style given by both speech and prompt as much as possible.
+          </p>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+
+            Extensive experiments show that, our approach
+            is able to achieve significant performance in using both speech and
+            text prompt to guide the generation of synergistic full-body motion
+            precisely and flexibly, which is beyond the capability of the existing
+            co-speech generation approaches.
+
+        </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section> 
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Control With MultiModal Prompts Arbitrarily</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our system enables flexible control of synergistic full-body motion generation based on both speeches and user prompts simultaneously.
+            Some results are shown below.
+          </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section> 
+
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="column is-centered has-text-centered">
+      <div id="results-carousel" class="carousel results-carousel">
+
+      <div class="column is-centered has-text-centered">
+          <p><b>Text Prompt: “the person is <font color="red">kneeling down</font>.”</b></p>
+                  <video poster="" id="tree"  controls width=300>
+            <source src="static/figures/videos/kneeldown.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-centered has-text-centered">
+          <p><b>Text Prompt: “the person is <font color="red">walking forward</font>.”</b></p>
+
+                  <video poster="" id="tree"  controls width=300>
+            <source src="static/figures/videos/walk.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-centered has-text-centered">
+      	<p><b> Text Prompt: “the person is <font color="red">sitting and raising up right hand</font>.”</b></p>
+
+                <video poster="" id="tree"  controls width=300>
+          <source src="static/figures/videos/sit_and_raiseuprighthand.mp4"
+          type="video/mp4">
+        </video>
+        </div>
+
+        <div class="column is-centered has-text-centered">
+          <p><b> Text Prompt: “the person is <font color="red">sitting down</font>.”</b></p>
+  
+                  <video poster="" id="tree"  controls width=300>
+            <source src="static/figures/videos/sitdown.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+
+  </div>
+</div>
+</div>
+</section>
+
+
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">More Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            "In the following video, we present additional results including comparation. 
+            Regardless of whether using single-modal speech input or multi-modal input combining speech and text, 
+            our generated results consistently achieve SOTA performance."
+          </p>
+        </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section> 
+
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+
+      
+      <div class="column is-centered has-text-centered">
+         <video poster="" id="tree"  controls width=800>
+          <source src="static/figures/videos/video.mp4"
+          type="video/mp4">
+        </video>
+      </div>
+      <div class="column is-centered has-text-centered">
+
+
+  </div>
+</div>
+</section>
+
+
+
+
+<section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+<pre><code>
+@inproceedings{chen2024syntalker,
+  author = {Bohong Chen and Yumeng Li and Yao-Xiang Ding and Tianjia Shao and Kun Zhou},
+  title = {Enabling Synergistic Full-Body Control in Prompt-Based Co-Speech Motion Generation},
+  booktitle = {Proceedings of the 32nd ACM International Conference on Multimedia},
+  year = {2024},
+  publisher = {ACM},
+  address = {New York, NY, USA},
+  pages = {10},
+  doi = {10.1145/3664647.3680847}
+}
+</code></pre>
+    </div>
+</section>
+
+
+
+
+<footer class="footer">
+ <!--  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+      href="https://homes.cs.washington.edu/~kpar/nerfies/videos/nerfies_paper.pdf">
+      <i class="fas fa-file-pdf"></i>
+    </a>
+    <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+      <i class="fab fa-github"></i>
+    </a>
+  </div> -->
+  <div class="columns is-centered">
+    <div class="column is-8">
+      <div class="content">
+        <p>
+          This website is licensed under a <a rel="license"
+          href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+        Commons Attribution-ShareAlike 4.0 International License</a>.
+      </p>
+      <p>
+        Website source code based on the <a href="https://nerfies.github.io/"> Nerfies</a> project page. If you want to reuse their <a
+        href="https://github.com/nerfies/nerfies.github.io">source code</a>, please credit them appropriately.
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+</footer>
+
+
+  <script type="text/javascript">
+    var sc_project=12351448; 
+    var sc_invisible=1; 
+    var sc_security="c676de4f"; 
+  </script>
+  <script type="text/javascript"
+  src="https://www.statcounter.com/counter/counter.js"
+  async></script>
+  <noscript><div class="statcounter"><a title="Web Analytics"
+    href="https://statcounter.com/" target="_blank"><img
+    class="statcounter"
+    src="https://c.statcounter.com/12351448/0/c676de4f/1/"
+    alt="Web Analytics"></a></div></noscript>
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
